@@ -53,7 +53,11 @@ commit message to trigger the JIRA workflow updates. Example format:
     https://<jira-url>/browse/<project>/<ticket>
 
 If you've created more than one commit, use a rebase to squash them into
-cohesive commits with good messages:
+cohesive commits with good messages. You can also do this after the pull request
+is created, if you receive feedback that requires additional commits.
+
+See the git documentation for [rebase] or this tutorial on [squashing commits
+with rebase]
 
     git rebase -i origin/develop
 
@@ -75,6 +79,9 @@ entire team in the Code Review process*
 
 [good commit message]: http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html
 [GitHub pull request]: https://help.github.com/articles/using-pull-requests/
+[rebase]: http://git-scm.com/docs/git-rebase
+[squashing commits with rebase]:
+http://gitready.com/advanced/2009/02/10/squashing-commits-with-rebase.html
 
 Review Code
 -----------
