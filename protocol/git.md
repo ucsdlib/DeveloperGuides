@@ -65,7 +65,8 @@ Share your branch.
 
     git flow feature publish <feature-name>
 
-Submit a [GitHub pull request].
+Submit a [GitHub pull request] after confirming the **entire test suite** passes
+locally.
 
 Currently, upon PR creation a JIRA trigger will automatically move the ticket
 status to *Code Review Requested* and assign the ticket
