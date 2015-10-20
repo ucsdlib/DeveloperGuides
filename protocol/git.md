@@ -57,7 +57,7 @@ cohesive commits with good messages. You can also do this after the pull request
 is created, if you receive feedback that requires additional commits.
 
 See the git documentation for [rebase] or this tutorial on [squashing commits
-with rebase]
+with rebase].
 
     git rebase -i origin/develop
 
@@ -66,6 +66,10 @@ Share your branch.
     git flow feature publish <feature-name>
 
 Submit a [GitHub pull request].
+
+If you have already submitted a pull request and need to rebase to squash additional commits you will likely need to force push your squashed commit.
+
+  `git push -f`
 
 Currently, upon PR creation a JIRA trigger will automatically move the ticket
 status to *Code Review Requested* and assign the ticket
