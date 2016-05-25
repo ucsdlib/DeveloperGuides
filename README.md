@@ -19,7 +19,7 @@ Since this repository covers best practice recommendations for the entire team,
 no PR will be merged until the entire team gives a :thumbsup:.
 
 *Note: For all other project repositories, follow the standard workflow outlined
-in [git](protocol/git.md)*
+in [git](protocol/git.md) and [code review](protocol/code_review.md)*
 
 ## License
 Distributed under [CC0 1.0 Universal](LICENSE)

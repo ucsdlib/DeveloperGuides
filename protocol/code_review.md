@@ -34,26 +34,33 @@ Having Your Code Reviewed
 * Extract some changes and refactorings into future tickets/stories.
 * Link to the code review from the JIRA ticket/story. ("Ready for review:
   https://github.com/organization/project/pull/1")
+* Send a comment in the PR to the `@ucsdlib/developers` group, asking for
+  feedback.
 * Push commits based on earlier rounds of feedback as isolated commits to the branch. Do not squash until the branch is ready to merge. Reviewers should be able to read individual updates based on their earlier feedback.
 * Seek to understand the reviewer's perspective.
 * Try to respond to every comment.
-* Wait to merge the branch until Bamboo plan tells you the test suite is green in the branch.
-* Merge once you feel confident in the code and its impact on the project.
 
 Reviewing Code
 --------------
 
+Pull Requests should be reviewed, and signed off, by at least two members of the development team. This is to facilitate shared knowledge across the group about updates to the entire codebase for a project, as well as ensuring we follow current best practices as consistently as possible.
+
+Note that you can @mention our entire group at once by using `@ucsdlib/developers` in your
+comments.
+
 Understand why the code is necessary (bug, user experience, refactoring). Then:
 
 * Communicate which ideas you feel strongly about and those you don't.
-* Identify ways to simplify the code while still solving the problem.
-* If discussions turn too philosophical or academic, move the discussion offline
-  to a regular Friday afternoon technique discussion. In the meantime, let the
-  author make the final decision on alternative implementations.
+* Identify ways to potentially refactor and simplify the code while still solving the problem.
+* If discussions turn too philosophical or academic, bring up the discussion in
+  the next Development Team Meeting. In the meantime, let the author make the final decision on alternative implementations.
 * Offer alternative implementations, but assume the author already considered
   them. ("What do you think about using a custom validator here?")
 * Seek to understand the author's perspective.
+* Wait to merge the branch until Bamboo plan tells you the test suite is green in the branch.
+* Merge once you feel confident in the code and its impact on the project.
 * Sign off on the pull request with a :thumbsup: or "Ready to merge" comment.
+* The last team member to sign off should merge the pull request.
 
 Style Comments
 --------------
