@@ -74,13 +74,13 @@ If you have already submitted a pull request and need to rebase to squash additi
 
 Currently, upon PR creation a JIRA trigger will automatically move the ticket
 status to *Code Review Requested* and assign the ticket
-to the project lead developer to perform [Code Review](code_review.md)
+to the project lead developer role to perform [Code Review](code_review.md)
+However, it is actually the responsibility of the team to review the PR. JIRA is
+not able to assign responsibility of a workflow state to a group. Be sure to
+send a comment in the PR to the `@ucsdlib/developers` group asking for review.
 
 *Please do not submit PRs on the last day of a Sprint. This does not give the
   team adequate time for the review process prior to creating a release.*
-
-*NOTE: We will likely change this process in the near future to include the
-entire team in the Code Review process*
 
 [good commit message]: http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html
 [GitHub pull request]: https://help.github.com/articles/using-pull-requests/
@@ -91,14 +91,14 @@ http://gitready.com/advanced/2009/02/10/squashing-commits-with-rebase.html
 Review Code
 -----------
 
-A team member other than the author reviews the pull request. They follow
+At least two team members other than the author reviews the pull request. They follow
 [Code Review](code_review.md) guidelines to avoid
-miscommunication.
+miscommunication. See [Code Review](code_review.md) for more information.
 
 They make comments and ask questions directly on lines of code in the GitHub
 web interface or in the JIRA ticket if non-developer feedback is needed.
 
-When satisfied, the PR is merged and the JIRA workflow will automatically mark
+When satisfied, the PR is merged by the last developer to sign off and the JIRA workflow will automatically mark
 the ticket as Resolved.
 
 Delete the feature branch following the PR merge.
