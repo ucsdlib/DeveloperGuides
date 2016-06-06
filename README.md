@@ -6,7 +6,7 @@ A repository for organizing style guides, templates, tools, and techniques for t
   * [Git](protocol/git.md)
   * [Release Management](protocol/release_management.md)
 * [Templates](templates/README.md)
-  * [UCSD TTO Copyright Disclosure Form](http://invent.ucsd.edu/invent/researchers/reporting-new-innovation/copyright-disclosure-form/)
+  * [UC San Diego Copyright Disclosure Form](http://invent.ucsd.edu/invent/researchers/reporting-new-innovation/copyright-disclosure-form/)
   * [Code Climate](templates/.codeclimate.yml)
   * [Copyright](templates/UC_Copyright_Notice.txt)
 * [Best Practices](best-practices/README.md)

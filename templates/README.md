@@ -2,9 +2,9 @@
 
 The following templates should be used in the creation of new projects.
 
-Prior to creating the new project repository in Github, the [Copyright Disclosure Form](http://invent.ucsd.edu/invent/researchers/reporting-new-innovation/copyright-disclosure-form/) must be filled out and signed by the entire development team, and then emailed to the UCSD Technology Transfer Office.
+Prior to creating the new project repository in Github, the [Copyright Disclosure Form](http://invent.ucsd.edu/invent/researchers/reporting-new-innovation/copyright-disclosure-form/) must be filled out and signed by the entire development team, and then emailed to the Office of Innovation and Commercialization (OIC).
 
-Once the copyright disclosure form has been turned into TTO, proceed with
+Once the copyright disclosure form has been turned into OIC, proceed with
 creating the new public repository in the [UCSD Library Organization](https://github.com/ucsdlib/) using the following templates.
 
 In the case of the UC Copyright Notice and License they should be used
