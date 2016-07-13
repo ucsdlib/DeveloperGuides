@@ -70,7 +70,7 @@ locally.
 
 If you have already submitted a pull request and need to rebase to squash additional commits you will likely need to force push your squashed commit.
 
-  `git push -f`
+  `git push --force-with-lease origin <feature-name>`
 
 Currently, upon PR creation a JIRA trigger will automatically move the ticket
 status to *Code Review Requested* and assign the ticket
