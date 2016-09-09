@@ -88,17 +88,10 @@ send a comment in the PR to the `@ucsdlib/developers` group asking for review.
 [squashing commits with rebase]:
 http://gitready.com/advanced/2009/02/10/squashing-commits-with-rebase.html
 
-Review Code
+Pull Requests
 -----------
 
-At least two team members other than the author reviews the pull request. They follow
-[Code Review](code_review.md) guidelines to avoid
-miscommunication. See [Code Review](code_review.md) for more information.
-
-They make comments and ask questions directly on lines of code in the GitHub
-web interface or in the JIRA ticket if non-developer feedback is needed.
-
-When satisfied, the PR is merged by the last developer to sign off and the JIRA workflow will automatically mark
-the ticket as Resolved.
-
-Delete the feature branch following the PR merge.
+* Use the [Code Review](code_review.md) guidelines to avoid miscommunication.
+* If two or more members of `@ucsdlib/developers` have signed off on a PR, the
+  creator of the PR should request a merge.
+* The feature branch should always be deleted following the merge of a PR.
