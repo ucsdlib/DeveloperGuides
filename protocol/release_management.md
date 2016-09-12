@@ -1,7 +1,13 @@
 Summary
 -------
 
-Overiew of the release management process for all software applications.
+Overview of the release management process for all software applications.
+
+*Note:* At the moment, we are in a transition between Bamboo and CircleCI. As a
+result, there will be some noted differences throughout this document that will ultimately be removed once
+Bamboo is removed from the architecture. For specifics on CircleCI and the newer
+"chatops" workflow, please see the [Environment Variables
+repository](https://github.com/ucsdlib/env-variables/)
 
 ## Release and QC
 1. Development Manager will assign a developer as Release Manager for the
@@ -28,7 +34,7 @@ git flow release publish 1.2.3
 git tag -a -f staging -m "release 1.2.3"
 git push -f --tags
 ```
-8. Bamboo CI will detect the release/1.2.3 branch and will run test suite and
+8. Bamboo(or Circle) CI will detect the release/1.2.3 branch and will run test suite and
    static analysis tooling via Code Climate. If successful, application will be
 deployed to the test environment. If not, Release Manager is responsible for
 fixing reported errors.
