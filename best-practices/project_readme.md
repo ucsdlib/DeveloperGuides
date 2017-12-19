@@ -10,6 +10,6 @@ following questions:
 * How to deploy it (if appropriate)
 * How to run the tests
 * Include relevant badges
-  * [Code Climate GPA](http://docs.codeclimate.com/article/170-code-climate-badges)
-  * [Code Climate Test Coverage](http://docs.codeclimate.com/article/170-code-climate-badges)
+  * [Circle CI Status](https://circleci.com/docs/1.0/status-badges/)
+  * [Coveralls Test Coverage](https://coveralls.io/github/ucsdlib/)
   * [Gemnasium](https://gemnasium.com) - add service hook to repo
