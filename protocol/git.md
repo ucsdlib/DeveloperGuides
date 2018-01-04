@@ -8,6 +8,8 @@ Maintain a Repo
 
 * Avoid including files in source control that are specific to your
   development machine or process by adding their formats to the .gitignore file.
+Look at [GitHub's gitignore repo][git-ignore] for starting points depending on
+the programming language.
 * Delete local and remote feature branches after merging.
 * Perform all new work in a feature branch.
 * Rebase frequently to incorporate upstream changes.
@@ -15,6 +17,7 @@ Maintain a Repo
 * Never commit any sensitive information such as files with passwords, SSH keys,
   etc. to a repository.
 
+[git-ignore]: https://github.com/github/gitignore
 [pull request]: https://help.github.com/articles/using-pull-requests/
 
 Write a Feature
