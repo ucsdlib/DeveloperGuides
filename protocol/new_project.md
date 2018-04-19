@@ -24,17 +24,15 @@ At the minimum, you should grant the `Developers` and `Operations` groups `Write
 ## Protected Branches
 Navigate to `Settings` in the repository and click `Branches`
 
-Following the Git Flow model, you should select the following in the Branches configuration for the repository:
+Following the [GitHub Flow model][gh-flow], you should select the following in the Branches configuration for the repository:
 
-Default Branch: `develop`
+Default Branch: `master`
 
-Protected Branch - `develop`:
+Protected Branch - `master`:
   * Project this branch
   * Require pull request reviews before merging
   * Require status checks to pass before merging
   * Require branches to be up to date before merging
 
-Protected Branch - `master`:
-  * Project this branch
-
 [readme]:../best-practices/project_readme.md
+[gh-flow]:https://guides.github.com/introduction/flow/
