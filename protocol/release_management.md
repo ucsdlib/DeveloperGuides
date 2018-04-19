@@ -15,7 +15,7 @@ repository][env-variables]
    application.
 2. Development Manager will create a GitHub issue for the release and assign to
    the Release Manager.
-3. Release Manager will navigate to master branch and create a tag off the
+3. Release Manager will navigate to `master` branch and create a tag off the
    commit we want to release from. The example below assumes creating the tag
 off the most current commit (_HEAD_). This can be done in [GitHub(preferred)][release], or on the command
 line as follows:
@@ -37,12 +37,12 @@ fixing reported errors.
 7. Release Manager will assign the Deploy issue to the Product Owner for
    review, highlighting areas that need to be tested.
 8. If problems are detected:
-  - A developer will make needed code changes on a new branch off master.
+  - A developer will make needed code changes on a new branch off `master`.
   - Commit and push changes to the new branch.
   - Write additional tests, if necessary, to cover the problem space detected
   - Run application test suite and Code Climate to verify all tests and
      analysis tools pass.
-  - Create a Pull Request to get your changes merged back into master
+  - Create a Pull Request to get your changes merged back into `master`
   - Move the release tag to the new commit (_HEAD_) and update the release notes
     accordingly.
 11. When Product Owner signs off on release, they will assign to Release

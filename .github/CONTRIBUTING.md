@@ -5,12 +5,12 @@ Please use the following process for creating a new [Pull Request](https://help.
 
 1. Create a feature branch for new work.
 2. Push commits to the feature branch, with appropriate test coverage (and tests passing).
-3. Prior to creating a Pull Request, make sure your branch is up to date with its parent branch (usually `develop`)
+3. Prior to creating a Pull Request, make sure your branch is up to date with its parent branch (usually `master`)
 ```
-git checkout develop
+git checkout master
 git pull --rebase
-git checkout <your-feature-branch>
-git rebase develop
+git checkout -b <your-feature-branch>
+git rebase master
 ```
 4. Run your tests again.
 5. Run rubocop `rubocop` (unless you already have it integrated into your IDE/Editor) and fix reported issues. This can be done automatically in some cases with `rubocop -a` 
