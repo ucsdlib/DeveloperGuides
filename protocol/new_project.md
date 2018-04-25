@@ -21,6 +21,21 @@ Navigate to `Settings` in the repository and click `Collaborators & teams`
 
 At the minimum, you should grant the `Developers` and `Operations` groups `Write` access.
 
+
+## Capistrano
+If the project uses, or will be using, Capistrano with `deploybot`, you need to setup the
+environment config files to support dynamically receiving a reference (branch,
+commit hash, tag) from deploybot.
+
+For example, `<app>/config/deploy/qa.rb`:
+
+`set :branch, (ENV['BRANCH'] || fetch(:branch, 'master'))`
+
+You can then deploy a tag using `deploybot` as follows(in this case, our tag is
+`1.4.1`:
+
+`deploybot deploy damspas/1.4.1 to qa`
+
 ## Protected Branches
 Navigate to `Settings` in the repository and click `Branches`
 
