@@ -21,6 +21,17 @@ Navigate to `Settings` in the repository and click `Collaborators & teams`
 
 At the minimum, you should grant the `Developers` and `Operations` groups `Write` access.
 
+## Jenkins Plans
+To ensure Jenkins staging/test plans can automatically build tags, please ensure
+the plan has the following configuration:
+
+1. Find the desired plan and click `Configure`
+1. Navigate to `Source Code Management`
+1. Ensure the git repository URL is setup correctly
+1. Click `Advanced` toggle (just below git URL)
+1. Set `Refspec` to `+refs/tags/*:refs/remotes/origin/tags/*`
+1. Navigate to `Branches to build` subsection
+1. Set value of `Branch Specifier` to `*/tags/*
 
 ## Capistrano
 If the project uses, or will be using, Capistrano with `deploybot`, you need to setup the
