@@ -2,6 +2,14 @@
 
 The following templates should be used in the creation of new projects.
 
+## Editor Config
+An [Editor Config][editor-config] template is provided that can be placed in the
+root directory of a project. This base template file will be maintained in this
+repository, ideally changes that are needed and not unique to the project will
+be discussed and implemented in this template.
+
+* [.editorconfig](.editorconfig)
+
 ## Copyright/License
 Prior to creating the new project repository in Github, the [Copyright Disclosure Form][copyright]
 must be filled out and signed by the entire development team, and then emailed
@@ -29,3 +37,4 @@ slowly cleaned up over time.
 
 [copyright]:http://invent.ucsd.edu/invent/researchers/reporting-new-innovation/copyright-disclosure-form/
 [ucsdlib]:https://github.com/ucsdlib/
+[editor-config]:https://editorconfig.org
