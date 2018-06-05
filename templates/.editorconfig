@@ -1,7 +1,7 @@
 # EditorConfig.org
 
 # if you add a project-specific file, consider whether leaving this is appropriate
-root = true
+# root = true
 
 # Global settings
 [*]
@@ -9,18 +9,9 @@ trim_trailing_whitespace = true
 insert_final_newline = true
 charset = utf-8
 indent_style = space
+indent_size = 2
 # Note we are _not_ setting this globally, git should manage it
 # end_of_line = lf
-
-# Markup and web languages
-[*.{js,css,html,erb,haml,yml,yaml}]
-indent_size = 2
-
-[*.{rb,rake}]
-indent_size = 2
-
-[{Rakefile,Gemfile,Capfile,Dockerfile}]
-indent_size = 2
 
 [*.{md,markdown}]
 indent_size = 4
