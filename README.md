@@ -11,6 +11,8 @@ A repository for organizing style guides, templates, tools, and techniques for t
   * [Hound CI](templates/.hound.yml)
   * [Rubocop](templates/.rubocop.yml)
   * [Copyright](templates/UC_Copyright_Notice.txt)
+* [Scripts](scripts/README.md)
+  * [Semantic Versioning](scripts/semver-bump)
 * [Best Practices](best-practices/README.md)
   * [Deployment](best-practices/deployment.md)
   * [Documentation](best-practices/documentation.md)

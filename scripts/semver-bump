@@ -1,0 +1,92 @@
+#!/bin/sh
+
+set -e
+
+if [ -z ${1+x} ]; then
+cat <<EOF
+semver-bump - Simple semantic versioning script
+usage: semver [VERSION_TYPE]
+VERSION_TYPE: one of "patch" "minor" "major"
+
+Patch Examples: current tag/version of 1.2.3
+$ semver-bump patch
+=> 1.2.4
+
+$ semver-bump minor
+=> 1.3.0
+
+$ semver-bump major
+=> 2.0.0
+
+No Patch Examples: current tag/version of 1.2
+$ semver-bump minor
+=> 1.3
+
+$ semver-bump major
+=> 2.0
+
+EOF
+exit 0
+fi
+
+# First tag/version to assign, if none exists
+FIRST_VERSION="0.0.0"
+
+# Create tempfile to hold git shortlog
+case "$(uname -s)" in
+  Darwin)
+    temp_file=$(mktemp -t tag-message.XXXXXXXXXX)
+    ;;
+  Linux)
+    temp_file=$(mktemp)
+    ;;
+  *)
+    echo "unsupport OS detected for generating a tempfile"
+    ;;
+esac
+trap 'rm -f $temp_file' 0 2 3 15
+
+if [ "$(git tag --list)" ]; then
+  current_version=$(git describe --tags | cut -d '-' -f1)
+else
+  current_version="$FIRST_VERSION"
+fi
+major_version=$(echo "$current_version" | cut -d '.' -f1)
+minor_version=$(echo "$current_version" | cut -d '.' -f2)
+patch_version=$(echo "$current_version" | cut -d '.' -f3)
+if [ -z "${patch_version}" ]; then
+  no_patch="yes"
+fi
+
+version_type="${1:-patch}"
+# Increment version
+case $version_type in
+  "patch") patch_version=$((patch_version + 1));;
+  "minor")
+    minor_version=$((minor_version + 1))
+    patch_version=0
+    ;;
+  "major")
+    major_version=$((major_version + 1))
+    minor_version=0
+    patch_version=0
+    ;;
+esac
+
+if [ "$no_patch" = "yes" ]; then
+  new_version="$major_version.$minor_version"
+else
+  new_version="$major_version.$minor_version.$patch_version"
+fi
+# Get current version and capture shortlog
+printf "Release %s:\n\n" ${new_version} > "$temp_file"
+if [ "$current_version" = "$FIRST_VERSION" ]; then
+  # first tag, so add all commits
+  git shortlog --no-merges >> "$temp_file"
+else
+  git shortlog --no-merges "$current_version"..HEAD >> "$temp_file"
+fi
+
+# Generate new version and allow for editing tag/release message
+git tag -e -a "$new_version" -F "$temp_file"
+echo "new version: $new_version"
