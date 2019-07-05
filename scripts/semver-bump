@@ -73,7 +73,7 @@ case $version_type in
     ;;
 esac
 
-if [ "$no_patch" = "yes" ]; then
+if test "$no_patch" = "yes" && test "$version_type" != "patch"; then
   new_version="$major_version.$minor_version"
 else
   new_version="$major_version.$minor_version.$patch_version"
