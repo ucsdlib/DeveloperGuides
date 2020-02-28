@@ -1,0 +1,75 @@
+stages:
+  - test
+  - deploy
+
+test:
+  image: circleci/ruby:2.3.7-jessie-node
+  stage: test
+  variables:
+    RAILS_ENV: test
+    APPS_DMR_TEST_SECRET_KEYBASE: 185ce6e80e774d2f2bcbbe94505fe03ff62c32d7efb53ee2050771a734c867d6
+    APPS_DMR_STREAMING_KEY: testkeytestkeytestkeytestkey
+  script:
+    - gem install bundler
+    - bundle check --path vendor || bundle install --path vendor --jobs 4 --retry 3
+    - bundle exec rubocop
+    - bundle exec rake db:migrate
+    - bundle exec rspec spec
+  cache:
+    key: ${CI_COMMIT_REF_SLUG}
+    paths:
+      - vendor/ruby
+
+pontos_deploy:
+  extends: .capistrano-deploy
+  variables:
+    SSH_USER: conan
+    SSH_SERVER: pontos.ucsd.edu
+  script:
+    - deploy_to "pontos"
+
+staging_deploy:
+  extends: .capistrano-deploy
+  variables:
+    SSH_USER: conan
+    SSH_SERVER: lib-hydrahead-staging.ucsd.edu
+  script:
+    - deploy_to "staging"
+
+production_deploy:
+  extends: .capistrano-deploy
+  variables:
+    SSH_USER: conan
+    SSH_SERVER: lib-hydrahead-prod.ucsd.edu
+  script:
+    - deploy_to "production"
+  only:
+    - master
+
+.deploy_helper: &deploy_helper |
+  deploy_to() {
+    if test $# -ne 1 ; then
+      echo "You must specify an environment to deploy the application to. example: staging"
+      exit 1
+    fi
+    cap "$1" deploy
+  }
+
+# Template for deploying to staging or production using Capistrano/SSH
+.capistrano-deploy:
+  image: ruby:2.3
+  stage: deploy
+  before_script:
+    - *deploy_helper
+    - 'which ssh-agent || ( apt-get update -y && apt-get install openssh-client -y )'
+    - eval $(ssh-agent)
+    - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add -
+    - mkdir -p ~/.ssh
+    - chmod 700 ~/.ssh
+    - ssh-keyscan "$SSH_SERVER" >> ~/.ssh/known_hosts
+    - chmod 644 ~/.ssh/known_hosts
+    - gem install capistrano
+    - gem install capistrano-bundler
+    - gem install capistrano-rails
+    - gem install capistrano-rbenv
+  when: manual

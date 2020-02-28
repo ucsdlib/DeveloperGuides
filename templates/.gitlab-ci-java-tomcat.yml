@@ -1,0 +1,45 @@
+image: openjdk:8-alpine
+
+variables:
+  OUTPUT_DIR: dist
+  WAR_FILE: $OUTPUT_DIR/apbatch.war
+
+stages:
+  - chatops
+
+staging_deploy:
+  extends: .tomcat-deploy
+  variables:
+    TOMCAT_USER: tomcat
+    TOMCAT_SERVER: kavik.ucsd.edu
+    TOMCAT_PASSWORD: $TOMCAT_MANAGER_STAGING_PASSWORD
+  script:
+    - deploy_to "staging"
+
+production_deploy:
+  extends: .tomcat-deploy
+  variables:
+    TOMCAT_USER: tomcat
+    TOMCAT_SERVER: ares.ucsd.edu
+    TOMCAT_PASSWORD: $TOMCAT_MANAGER_PRODUCTION_PASSWORD
+  script:
+    - deploy_to "production"
+
+.deploy_helper: &deploy_helper |
+  deploy_to() {
+    if test $# -ne 1 ; then
+      echo "You must specify an environment to deploy the application to. example: staging"
+      exit 1
+    fi
+    curl --upload-file $WAR_FILE "http://$TOMCAT_USER:$TOMCAT_PASSWORD@$TOMCAT_SERVER:8080/manager/deploy?path=/apbatch&update=true"
+    echo -e "section_start:$( date +%s ):chat_reply\r\033[0K\nDeploy Succeeded - $CI_JOB_URL\nsection_end:$( date +%s ):chat_reply\r\033[0K"
+  }
+
+# Template for deploying to staging or production
+.tomcat-deploy:
+  stage: chatops
+  only: [chat]
+  before_script:
+    - apk add --no-cache apache-ant git unzip curl
+    - ant clean webapp
+    - *deploy_helper
