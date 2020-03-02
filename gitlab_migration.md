@@ -91,6 +91,7 @@ You also will likely want to just get the `build` and/or `test` stages passing f
 1. Copy the [Java Tomcat Manager GitLab template][gitlab-java-tomcat] into your project, renaming it
    to `.gitlab-ci.yml`
 1. Update the template to match the needs of the project.
+1. Add sensitive [environment variables][gitlab-env-vars] such as `TOMCAT_MANAGER_STAGING_PASSWORD` and others as needed to the GitLab project.
 
 ### Java Application Deployed via SSH
 > If this project **CAN** use Tomcat Manager, it would be preferrable to do that, as you can avoid direct SSH commands
@@ -127,5 +128,6 @@ GitHub and any existing CI tools such as `CircleCI`, `Hound`, etc.
 ![Archive GitHub Repo](./assets/github-archive.png)
 
 [gitlab-dev]:https://gitlab.com/ucsdlibrary/development
-[gitlab-ruby]:./templates/.gitlab-ci-ruby.yml
+[gitlab-env-vars]:https://docs.gitlab.com/ee/ci/variables/
 [gitlab-java-tomcat]:./templates/.gitlab-ci-java-tomcat.yml
+[gitlab-ruby]:./templates/.gitlab-ci-ruby.yml
