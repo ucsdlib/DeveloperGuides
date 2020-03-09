@@ -59,9 +59,6 @@ production_deploy:
 .capistrano-deploy:
   image: ruby:2.3
   stage: deploy
-  variables:
-    BUNDLER_WITHOUT: default:development:test
-    BUNDLER_WITH: deploy
   before_script:
     - *deploy_helper
     - 'which ssh-agent || ( apt-get update -y && apt-get install openssh-client -y )'
@@ -71,5 +68,5 @@ production_deploy:
     - chmod 700 ~/.ssh
     - ssh-keyscan "$SSH_SERVER" >> ~/.ssh/known_hosts
     - chmod 644 ~/.ssh/known_hosts
-    - bundle check || bundle install --jobs 4 --retry 3
+    - bundle install --without default development test --jobs 4 --retry 3
   when: manual
