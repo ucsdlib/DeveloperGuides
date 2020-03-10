@@ -1,6 +1,6 @@
 stages:
   - test
-  - deploy
+  - chatops
 
 test:
   image: circleci/ruby:2.3.7-jessie-node
@@ -23,28 +23,32 @@ test:
 pontos_deploy:
   extends: .capistrano-deploy
   variables:
-    SSH_USER: conan
+    SSH_PRIVATE_KEY: $SSH_KEY_PONTOS
     SSH_SERVER: pontos.ucsd.edu
+    SSH_USER: conan
   script:
     - deploy_to "pontos"
+    - echo -e "section_start:$( date +%s ):chat_reply\r\033[0K\nPontos Deploy Succeeded - $CI_JOB_URL\nsection_end:$( date +%s ):chat_reply\r\033[0K"
 
 staging_deploy:
   extends: .capistrano-deploy
   variables:
-    SSH_USER: conan
+    SSH_PRIVATE_KEY: $SSH_KEY_STAGING
     SSH_SERVER: lib-hydrahead-staging.ucsd.edu
+    SSH_USER: conan
   script:
     - deploy_to "staging"
+    - echo -e "section_start:$( date +%s ):chat_reply\r\033[0K\nStaging Deploy Succeeded - $CI_JOB_URL\nsection_end:$( date +%s ):chat_reply\r\033[0K"
 
 production_deploy:
   extends: .capistrano-deploy
   variables:
-    SSH_USER: conan
+    SSH_PRIVATE_KEY: $SSH_KEY_PRODUCTION
     SSH_SERVER: lib-hydrahead-prod.ucsd.edu
+    SSH_USER: conan
   script:
     - deploy_to "production"
-  only:
-    - master
+    - echo -e "section_start:$( date +%s ):chat_reply\r\033[0K\nProduction Deploy Succeeded - $CI_JOB_URL\nsection_end:$( date +%s ):chat_reply\r\033[0K"
 
 .deploy_helper: &deploy_helper |
   deploy_to() {
@@ -52,13 +56,14 @@ production_deploy:
       echo "You must specify an environment to deploy the application to. example: staging"
       exit 1
     fi
-    cap "$1" deploy
+    bundle exec cap "$1" deploy
   }
 
-# Template for deploying to staging or production using Capistrano/SSH
+# Template for deploying to various named environments using Capistrano/SSH
 .capistrano-deploy:
-  image: ruby:2.3
-  stage: deploy
+  image: ruby:2.3.7
+  stage: chatops
+  only: [chat]
   before_script:
     - *deploy_helper
     - 'which ssh-agent || ( apt-get update -y && apt-get install openssh-client -y )'
@@ -68,5 +73,5 @@ production_deploy:
     - chmod 700 ~/.ssh
     - ssh-keyscan "$SSH_SERVER" >> ~/.ssh/known_hosts
     - chmod 644 ~/.ssh/known_hosts
+    - gem update bundler
     - bundle install --without default development test --jobs 4 --retry 3
-  when: manual
