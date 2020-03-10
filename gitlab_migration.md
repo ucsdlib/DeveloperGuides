@@ -45,6 +45,9 @@ Go to Settings -> CI/CD:
 
 1. Click `Expand` on the `Variables` section, and create a variable named
    `SSH_PRIVATE_KEY` with the value of the key pasted in.
+1. Toggle the `Protected` radio button, ensuring this variable is only
+   accessible in protected branches/tags/environments. Note: `master` should be
+   setup as a [protected branch][gitlab-protected-branches].
 1. Click `Save Variables`
 
 ### Merge Requests
@@ -130,4 +133,5 @@ GitHub and any existing CI tools such as `CircleCI`, `Hound`, etc.
 [gitlab-dev]:https://gitlab.com/ucsdlibrary/development
 [gitlab-env-vars]:https://docs.gitlab.com/ee/ci/variables/
 [gitlab-java-tomcat]:./templates/.gitlab-ci-java-tomcat.yml
+[gitlab-protected-branches]:https://gitlab.com/help/user/project/protected_branches.md
 [gitlab-ruby]:./templates/.gitlab-ci-ruby.yml
