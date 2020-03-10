@@ -54,6 +54,9 @@ Go to Settings -> CI/CD:
 1. Navigate to Settings -> General
 1. Toggle `Merge Requests`
 1. Choose `Fast-forward merge`
+1. Copy the contents of the [Gitlab Merge Request template][gitlab-mr-template]
+   into the textarea titled `Default description template for merge requests`
+   and adjust if needed.
 
 ### CI/CD Runners
 1. Navigate to Settings -> CI/CD
@@ -133,5 +136,6 @@ GitHub and any existing CI tools such as `CircleCI`, `Hound`, etc.
 [gitlab-dev]:https://gitlab.com/ucsdlibrary/development
 [gitlab-env-vars]:https://docs.gitlab.com/ee/ci/variables/
 [gitlab-java-tomcat]:./templates/.gitlab-ci-java-tomcat.yml
+[gitlab-mr-template]:./templates/gitlab_merge_requests.md
 [gitlab-protected-branches]:https://gitlab.com/help/user/project/protected_branches.md
 [gitlab-ruby]:./templates/.gitlab-ci-ruby.yml
