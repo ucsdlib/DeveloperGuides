@@ -94,7 +94,7 @@ You also will likely want to just get the `build` and/or `test` stages passing f
 1. Copy the [Java Tomcat Manager GitLab template][gitlab-java-tomcat] into your project, renaming it
    to `.gitlab-ci.yml`
 1. Update the template to match the needs of the project.
-1. Add sensitive [environment variables][gitlab-env-vars] such as `TOMCAT_MANAGER_STAGING_PASSWORD` and others as needed to the GitLab project.
+1. Add sensitive [environment variables][gitlab-env-vars] such as `TOMCAT_MANAGER_STAGING_PASSWORD` and others as needed to the GitLab project. You can follow the same steps as the SSH key setup, ensuring that the variable is `Protected` and, if possible, `Masked`. Non-sensitive environment variables can simply be added to the `.gitlab-ci.yml` file directly, or using an `.env` file.
 
 ### Java Application Deployed via SSH
 > If this project **CAN** use Tomcat Manager, it would be preferrable to do that, as you can avoid direct SSH commands
