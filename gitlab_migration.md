@@ -74,7 +74,10 @@ Go to Settings -> CI/CD:
 
 Examples:
 ```
-/gitlab ucsdlibrary/apbatch run staging_deploy
+# Deploy the tag 1.5.0 to staging
+/gitlab ucsdlibrary/apbatch run staging_deploy 1.5.0
+
+# Deploy the master(default) branch to pontos
 /gitlab ucsdlibrary/dmr run pontos_deploy
 ```
 
