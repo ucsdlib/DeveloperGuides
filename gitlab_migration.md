@@ -95,6 +95,23 @@ You also will likely want to just get the `build` and/or `test` stages passing f
 1. Copy the [Ruby GitLab template][gitlab-ruby] into your project, renaming it
    to `.gitlab-ci.yml`
 1. Update the template to match the needs of the project.
+#### Capistrano Changes
+There are a few other things you may need to change for migrating a project
+using Capistrano.
+
+- In `./config/deploy.rb` change `repo_url` to reference the new GitLab repo: `set :repo_url, 'https://gitlab.com/ucsdlibrary/development/dmr.git'`
+- In each `./config/deploy/{environment}` file, you may have a block of code as
+    below. This is no longer needed with the GitLab configuration, and may be
+    removed. This is because the GitLab runner will have the key in its keychain
+    already.
+
+```
+if ENV["CAP_SSHKEY_PONTOS"]
+  puts "Using key: #{File.join(ENV["HOME"], ENV["CAP_SSHKEY_PONTOS"])}"
+  set :ssh_options, { keys: File.join(ENV["HOME"], ENV["CAP_SSHKEY_PONTOS"]) }
+end
+```
+
 
 ### Java Application Deployed via Tomcat Manager
 1. Copy the [Java Tomcat Manager GitLab template][gitlab-java-tomcat] into your project, renaming it
