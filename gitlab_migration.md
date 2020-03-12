@@ -33,8 +33,8 @@ Refresh the browser page to confirm the repository is populated on GitLab
 
 In order to deploy applications via SSH, a keypair will need to be generated and
 the private key added as a CI/CD environment variable. Work with Operations to
-obtain this key and ensure the keys are setup on the hosts that need to be
-deployed to.
+obtain these keys, generally one keypair per environment, and ensure the keys
+are setup on the hosts that need to be deployed to.
 
 > NOTE: we only are doing this because we're running all GitLab runners in our
 local infrastructure, which we trust to deploy.
@@ -43,9 +43,10 @@ Go to Settings -> CI/CD:
 
 ![CI/CD Settings](./assets/ci-cd-settings.png)
 
-1. Click `Expand` on the `Variables` section, and create a variable named
-   `SSH_PRIVATE_KEY` with the value of the key pasted in.
-1. Toggle the `Protected` radio button, ensuring this variable is only
+1. Click `Expand` on the `Variables` section, and create a variables for each
+   SSH private key you have (per environment) named, for example,
+   `SSH_KEY_STAGING`, `SSH_KEY_PRODUCTION` with the value of the key pasted in.
+1. Toggle the `Protected` radio button for each variable, ensuring this variable is only
    accessible in protected branches/tags/environments. Note: `master` should be
    setup as a [protected branch][gitlab-protected-branches].
 1. Click `Save Variables`
