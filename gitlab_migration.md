@@ -59,6 +59,11 @@ Go to Settings -> CI/CD:
    into the textarea titled `Default description template for merge requests`
    and adjust if needed.
 
+### Merge Requests Approvals
+1. Navigate to Settings -> General
+1. Toggle `Merge request approvals`
+1. Change `No. approvals required` from `0` to `1`
+
 ### CI/CD Runners
 1. Navigate to Settings -> CI/CD
 1. Toggle `Runners`
