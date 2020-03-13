@@ -51,6 +51,16 @@ Go to Settings -> CI/CD:
    setup as a [protected branch][gitlab-protected-branches].
 1. Click `Save Variables`
 
+### Test Coverage
+1. Navigate to Settings -> CI/CD:
+1. Scroll down to `Test coverage parsing`
+1. Apply the regex that fits your test tooling (one of the examples listed
+   should work for your language)
+1. Click `Save Changes`
+1. If you would like, add a coverage badge to the project `README`
+
+![Test Coverage](./assets/coverage.png)
+
 ### Merge Requests
 1. Navigate to Settings -> General
 1. Toggle `Merge Requests`
